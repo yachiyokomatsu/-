@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>zyanken</title>
+<body>
+    <div class="container">
+    <h1> Piedra Papel Tijera「じゃんけん」 </h1>
+    <h2> Presione el botón de mano「手のボタンを押して下さい」 </h2>
+    <span id="score">score:0</span><br>
+    <img src="zyanken1.png" width="100px" onclick="kekka(0);">
+    <img src="zyanken3.png" width="100px" onclick="kekka(2);">
+    <img src="zyanken2.png" width="100px" onclick="kekka(1);">
+
+
+    <div>
+       <p>Computadora</p>
+        <img id="com"src="zyanken1.png" width="200">
+       <p> Yo </p>
+        <img id="you"src="zyanken1.png" width="200">
+
+    <div id="result">
+        Resurutado
+    </div>
+    </div>
+    </div>
+    <style>
+    body {
+         background-color: #efefef;
+    }
+    .container{
+    width: 700px;
+    margin:  auto;
+    padding: 15px;
+    text-align: center;
+    }
+
+    h2{
+    text-align: center;
+    }
+    h1{
+    text-align: center;
+    }
+    #score{
+    text-align: right;
+    font-size:30px;
+    }
+    p{
+    font-size:30px;
+    margin: auto;
+    }
+    #result{
+    font-size: 40px;
+    color:red;
+    }
+    </style>
+
+<script>
+let score =0;
+
+let te =["zyanken1.png","zyanken2.png","zyanken3.png",];
+
+let comElm =document.getElementById("com");
+let youElm =document.getElementById("you");
+let result =document.getElementById("result");
+let scoElm =document.getElementById("score");
+
+function kekka(you)
+{
+  let com =Math.floor(Math.random()*3);//0～2の乱数
+
+    comElm.src =te[com];
+    youElm.src =te[you];
+
+   if (com == you)
+   {
+     result.innerHTML ="¡Empate otra vez!";
+   }
+    else if(com ==0 && you==2 ||
+            com ==1 && you==0 ||
+            com ==2 && you==1)
+    {
+     result.innerHTML ="¡Gané!";
+     score+=1;
+     scoElm.innerText="Score: "+score;
+    }
+    else
+     result.innerHTML ="¡Perdí!";
+}
+</script>
+</body>
+</html>
